@@ -12,20 +12,20 @@ public class PlayerCamera : MonoBehaviour
     private float _yRotation;
 
     private void Start(){
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        // Cursor.lockState = CursorLockMode.Locked;
+        // Cursor.visible = false;
     }
 
     private void Update(){
-        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * _xLookSensitivity;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * _yLookSensitivity;
+        // float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * _xLookSensitivity;
+        // float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * _yLookSensitivity;
 
-        this._yRotation += mouseX;
+        // this._yRotation += mouseX;
 
-        this._xRotation -= mouseY;
-        this._xRotation = Mathf.Clamp(this._xRotation, -90.0f, 90.0f);
+        // this._xRotation -= mouseY;
+        // this._xRotation = Mathf.Clamp(this._xRotation, -90.0f, 90.0f);
 
-        this.transform.rotation = Quaternion.Euler(this._xRotation, this._yRotation, 0);
-        this._playerOrientation.rotation = Quaternion.Euler(0, this._yRotation, 0);
+        // this.transform.rotation = Quaternion.Euler(this._xRotation, this._yRotation, 0);
+        // this._playerOrientation.rotation = Quaternion.Euler(0, this._yRotation, 0);
     }
 }

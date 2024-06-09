@@ -8,5 +8,6 @@ public class CameraHolder : MonoBehaviour
     
     private void Update(){
         this.transform.position = this._cameraPosition.position;
+        this.transform.rotation = this._cameraPosition.rotation;
     }
 }
