@@ -94935,6 +94935,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1337791395}
+  timeEndPowerup: 30
+  massChangeAmount: 0.5
 --- !u!1 &2081583520
 GameObject:
   m_ObjectHideFlags: 0
@@ -95156,7 +95158,7 @@ SceneRoots:
   - {fileID: 1418334630}
   - {fileID: 1355374331}
   - {fileID: 2101702987}
+  - {fileID: 2043665040}
   - {fileID: 1272361368}
   - {fileID: 1488483081}
   - {fileID: 1649665044}
-  - {fileID: 2043665040}

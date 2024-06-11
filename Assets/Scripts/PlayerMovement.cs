@@ -222,5 +222,10 @@ public class PlayerMovement : MonoBehaviour
     private void StopGrounded() {
         _isGrounded = false;
     }
+
+    public void AddMaxAirJumps(int num)
+    {
+        this._maxAirJumps += num;
+    }
     
 }
