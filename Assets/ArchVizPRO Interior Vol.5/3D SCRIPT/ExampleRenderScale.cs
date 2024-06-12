@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.VR;
+using UnityEngine.XR;
 
-namespace VRStandardAssets.Examples
+namespace XRStandardAssets.Examples
 { 
 	public class ExampleRenderScale : MonoBehaviour
 	{
