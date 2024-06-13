@@ -37,7 +37,11 @@ public class CheckpointObserver : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.E))
         {
+            Debug.Log("e pressed");
+            this.Player.SetActive(false);
             this.Player.transform.position = this.Position;
+            this.Player.SetActive(true);
+
         }
     }
 }
