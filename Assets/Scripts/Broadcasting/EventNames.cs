@@ -15,6 +15,11 @@ public class EventNames {
 	public class Checkpoint {
         public const string ON_COLLIDE_CHECKPOINT = "ON_COLLIDE_CHECKPOINT";
     }
+
+    public class MistCollide 
+    {
+        public const string ON_COLLIDE_MIST = "ON_COLLIDE_MIST";
+    }
 }
 
 
