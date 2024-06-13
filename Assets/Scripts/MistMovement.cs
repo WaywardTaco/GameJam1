@@ -13,6 +13,6 @@ public class MistMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.Translate(Vector3.up * Time.deltaTime, Space.World); 
+        this.transform.Translate(Vector3.up * Time.deltaTime * 0.5f, Space.World); 
     }
 }
