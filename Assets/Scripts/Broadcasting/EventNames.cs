@@ -11,6 +11,10 @@ public class EventNames {
 		public const string ON_COLLIDE_CAPSULE = "ON_COLLIDE_CAPSULE";
         public const string ON_COLLIDE_JETPACK = "ON_COLLIDE_JETPACK";
     }
+
+	public class Checkpoint {
+        public const string ON_COLLIDE_CHECKPOINT = "ON_COLLIDE_CHECKPOINT";
+    }
 }
 
 
