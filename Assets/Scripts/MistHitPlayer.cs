@@ -15,31 +15,30 @@ public class MistHitPlayer : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.name == "Body")
         {
             Debug.Log("Hit player");
-            this.playerHealth -= 10;
-
-            if(this.playerHealth <= 0)
-                EventBroadcaster.Instance.PostEvent(EventNames.MistCollide.ON_MIST_KILLS);
+            
+            Invoke("PlayerDamage", 3.0f);
         }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        
     }
 
     private void OnTriggerExit(Collider other)
     {
-        
+        if(other.gameObject.name == "Body")
+            CancelInvoke();
+    }
+
+    private void PlayerDamage()
+    {
+        Debug.Log("Player takes damage");
+        this.playerHealth -= 10;
+
+        if(this.playerHealth <= 0)
+            EventBroadcaster.Instance.PostEvent(EventNames.MistCollide.ON_MIST_KILLS);
+
+        Invoke("PlayerDamage", 3.0f);
     }
 }
