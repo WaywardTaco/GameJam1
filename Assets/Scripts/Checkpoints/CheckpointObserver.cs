@@ -6,12 +6,15 @@ public class CheckpointObserver : MonoBehaviour
 {
 
     [SerializeField] private GameObject Player;
+    [SerializeField] private AudioClip _CheckpointSFX;
     private Vector3 Position = Vector3.zero;
-
+    private AudioSource _audioPlayer;
 
     void Start()
     {
         this.Position = Player.transform.position;
+        this._audioPlayer = GetComponent<AudioSource>();
+        this._audioPlayer.clip = this._CheckpointSFX;
         EventBroadcaster.Instance.AddObserver(EventNames.Checkpoint.ON_COLLIDE_CHECKPOINT, this.OnCollideCheckpoint);
     }
 
@@ -30,6 +33,7 @@ public class CheckpointObserver : MonoBehaviour
         if (y > this.Position.y)
         {
             this.Position = new Vector3(x, y, z);
+            this._audioPlayer.Play();
         }
     }
 
