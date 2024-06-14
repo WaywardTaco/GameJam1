@@ -29,7 +29,7 @@ public class PowerupObserver : MonoBehaviour
     private void OnCollideCanister()
     {
         Debug.Log("canister");
-        mist.damage = 10;
+        this.mist.damage = 0;
         Invoke("OnCanisterEnd", timeEndPowerup);
     }
 
@@ -51,7 +51,7 @@ public class PowerupObserver : MonoBehaviour
 
     private void OnCanisterEnd()
     {
-        mist.damage = 0;
+        this.mist.damage = 10;
         Debug.Log("end canister");
     }
 

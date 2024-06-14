@@ -41,7 +41,7 @@ public class MistHitPlayer : MonoBehaviour
     {
         Debug.Log("Player takes damage");
         this.playerHealth -= damage;
-
+        Debug.Log(playerHealth);
         if(this.playerHealth <= 0)
             EventBroadcaster.Instance.PostEvent(EventNames.MistCollide.ON_MIST_KILLS);
 
