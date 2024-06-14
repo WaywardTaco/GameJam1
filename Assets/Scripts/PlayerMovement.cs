@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -10,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask _groundMask;
     
     private Rigidbody _rigidBody;
+    private AudioSource _audioPlayer;
 
     [Header("Look Stats")]
     [SerializeField] private float _xSense = 400.0f;
@@ -33,6 +35,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _jumpForce = 750f;
     [SerializeField] private int _maxAirJumps = 1;
 
+    [Header("Sound Files")]
+    [SerializeField] private List<AudioClip> _jumpSounds;
+
     private int airJumpsLeft;
     
     /* Inputs */
@@ -42,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake() {
         _rigidBody = GetComponent<Rigidbody>();
+        _audioPlayer = GetComponent<AudioSource>();
     }
     
     void Start() {
@@ -120,6 +126,8 @@ public class PlayerMovement : MonoBehaviour
             _rigidBody.velocity = new Vector3(vel.x, 0, vel.z);
         else if (_rigidBody.velocity.y > 0) 
             _rigidBody.velocity = new Vector3(vel.x, vel.y / 2, vel.z);
+
+        this.PlayJumpSound();
 
         //Add jump forces
         _rigidBody.AddForce(Vector2.up * _jumpForce * 1.5f);
@@ -217,6 +225,13 @@ public class PlayerMovement : MonoBehaviour
             cancellingGrounded = true;
             Invoke(nameof(StopGrounded), Time.deltaTime * delay);
         }
+    }
+
+    private void PlayJumpSound(){
+        int soundIndex = UnityEngine.Random.Range(0, this._jumpSounds.Count);
+
+        this._audioPlayer.clip = this._jumpSounds[soundIndex];
+        this._audioPlayer.Play();
     }
 
     private void StopGrounded() {

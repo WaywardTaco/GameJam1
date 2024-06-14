@@ -17,8 +17,6 @@ public class MistHitPlayer : MonoBehaviour
     {
         this.gameObject.GetComponent<Collider>().enabled = true;
         this.gameObject.GetComponent<Collider>().isTrigger = true;
-
-
     }
 
     private void OnTriggerEnter(Collider other)
@@ -26,7 +24,9 @@ public class MistHitPlayer : MonoBehaviour
         if(other.gameObject.name == "Body")
         {
             Debug.Log("Hit player");
-            
+
+            EventBroadcaster.Instance.PostEvent(EventNames.MistCollide.ON_COLLIDE_MIST);
+
             Invoke("PlayerDamage", 3.0f);
         }
     }
@@ -34,7 +34,11 @@ public class MistHitPlayer : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if(other.gameObject.name == "Body")
+        {
+            EventBroadcaster.Instance.PostEvent(EventNames.MistCollide.ON_MIST_EXIT);
             CancelInvoke();
+        }
+            
     }
 
     private void PlayerDamage()
@@ -42,6 +46,9 @@ public class MistHitPlayer : MonoBehaviour
         Debug.Log("Player takes damage");
         this.playerHealth -= damage;
         Debug.Log(playerHealth);
+
+        EventBroadcaster.Instance.PostEvent(EventNames.MistCollide.ON_MIST_DAMAGE);
+
         if(this.playerHealth <= 0)
             EventBroadcaster.Instance.PostEvent(EventNames.MistCollide.ON_MIST_KILLS);
 
