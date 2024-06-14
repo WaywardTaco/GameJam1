@@ -7,6 +7,9 @@ public class MistHitPlayer : MonoBehaviour
     public int playerHealth = 100;
     public int damage = 10;
 
+    [SerializeField] private AudioClip _hurtSound;
+    private AudioSource _audioPlayer;
+
     public int Damage
     {
         set { damage = value; }
@@ -17,6 +20,9 @@ public class MistHitPlayer : MonoBehaviour
     {
         this.gameObject.GetComponent<Collider>().enabled = true;
         this.gameObject.GetComponent<Collider>().isTrigger = true;
+
+        this._audioPlayer = GetComponent<AudioSource>();
+        this._audioPlayer.clip = _hurtSound;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,10 +30,9 @@ public class MistHitPlayer : MonoBehaviour
         if(other.gameObject.name == "Body")
         {
             Debug.Log("Hit player");
-
             EventBroadcaster.Instance.PostEvent(EventNames.MistCollide.ON_COLLIDE_MIST);
 
-            Invoke("PlayerDamage", 3.0f);
+            Invoke("PlayerDamage", 0.5f);
         }
     }
 
@@ -45,9 +50,12 @@ public class MistHitPlayer : MonoBehaviour
     {
         Debug.Log("Player takes damage");
         this.playerHealth -= damage;
+        if(this.damage > 0){
+            this._audioPlayer.Play();
+            EventBroadcaster.Instance.PostEvent(EventNames.MistCollide.ON_MIST_DAMAGE);
+        }
         Debug.Log(playerHealth);
 
-        EventBroadcaster.Instance.PostEvent(EventNames.MistCollide.ON_MIST_DAMAGE);
 
         if(this.playerHealth <= 0)
             EventBroadcaster.Instance.PostEvent(EventNames.MistCollide.ON_MIST_KILLS);
