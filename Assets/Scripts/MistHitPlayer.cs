@@ -5,6 +5,12 @@ using UnityEngine;
 public class MistHitPlayer : MonoBehaviour
 {
     public int playerHealth = 100;
+    public int damage = 10;
+
+    public int Damage
+    {
+        set { damage = value; }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +40,7 @@ public class MistHitPlayer : MonoBehaviour
     private void PlayerDamage()
     {
         Debug.Log("Player takes damage");
-        this.playerHealth -= 10;
+        this.playerHealth -= damage;
 
         if(this.playerHealth <= 0)
             EventBroadcaster.Instance.PostEvent(EventNames.MistCollide.ON_MIST_KILLS);

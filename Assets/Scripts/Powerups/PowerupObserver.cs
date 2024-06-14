@@ -9,6 +9,7 @@ public class PowerupObserver : MonoBehaviour
     [SerializeField] private float timeEndPowerup = 30f;
     [SerializeField] private float massChangeAmount = 0.5f;
     [SerializeField] private int jumpChangeAmount = 2;
+    [SerializeField] MistHitPlayer mist;
 
 
     void Start()
@@ -28,13 +29,14 @@ public class PowerupObserver : MonoBehaviour
     private void OnCollideCanister()
     {
         Debug.Log("canister");
+        mist.damage = 10;
         Invoke("OnCanisterEnd", timeEndPowerup);
     }
 
     private void OnCollideCapsule()
     {
         Rigidbody Mass = this.Player.GetComponent<Rigidbody>();
-        if(Mass != null ) Mass.mass -= massChangeAmount;
+        if(Mass != null) Mass.mass -= massChangeAmount;
         Debug.Log("capsule");
         Invoke("OnCapsuleEnd", timeEndPowerup);
     }
@@ -49,6 +51,7 @@ public class PowerupObserver : MonoBehaviour
 
     private void OnCanisterEnd()
     {
+        mist.damage = 0;
         Debug.Log("end canister");
     }
 
