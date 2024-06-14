@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class MistMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
         this.transform.Translate(Vector3.up * Time.deltaTime * 0.5f, Space.World); 
