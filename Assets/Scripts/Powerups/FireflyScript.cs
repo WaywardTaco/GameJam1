@@ -5,13 +5,16 @@ using UnityEngine.XR;
 
 public class FireflyScript : MonoBehaviour
 {
+    [SerializeField] GameObject prefab;
     private string PlayerName = "Player";
 
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
     {
         GameObject Player = GameObject.Find(PlayerName);
-        this.gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
+        this.prefab.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
+        Light light = this.prefab.GetComponent<Light>();
+        if(light != null) light.color = Color.green;
 
         if (other.gameObject.name == "Body")
         {
