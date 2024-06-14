@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MistHitPlayer : MonoBehaviour
 {
-    private int playerHealth = 100;
+    public int playerHealth = 100;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +26,12 @@ public class MistHitPlayer : MonoBehaviour
         if(other.gameObject.name == "Body")
         {
             Debug.Log("Hit player");
+            this.playerHealth -= 10;
+
+
+            Parameters param = new Parameters();
+            param.PutExtra("NUM_HEALTH", this.playerHealth);
+            EventBroadcaster.Instance.PostEvent(EventNames.MistCollide.ON_COLLIDE_MIST);
         }
     }
 
