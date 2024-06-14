@@ -6,7 +6,6 @@ using UnityEngine.XR;
 public class FireflyScript : MonoBehaviour
 {
     [SerializeField] GameObject prefab;
-    private string PlayerName = "Player";
 
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
