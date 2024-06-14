@@ -9,7 +9,7 @@ public class CanisterScript : MonoBehaviour
         if (other.gameObject.name == "Body")
         {
             EventBroadcaster.Instance.PostEvent(EventNames.Powerups.ON_COLLIDE_CANISTER);
-            Destroy(this.gameObject);
+            Destroy(this.transform.parent.gameObject);
         }
     }
 }

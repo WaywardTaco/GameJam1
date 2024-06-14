@@ -9,7 +9,7 @@ public class JetpackScript : MonoBehaviour
         if (other.gameObject.name == "Body")
         {
             EventBroadcaster.Instance.PostEvent(EventNames.Powerups.ON_COLLIDE_JETPACK);
-            Destroy(this.gameObject);
+            Destroy(this.transform.parent.gameObject);
         }
     }
 }
