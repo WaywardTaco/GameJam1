@@ -18,7 +18,7 @@ public class EventNames {
 
     public class MistCollide 
     {
-        public const string ON_COLLIDE_MIST = "ON_COLLIDE_MIST";
+        public const string ON_MIST_KILLS = "ON_MIST_KILLS";
     }
 }
 

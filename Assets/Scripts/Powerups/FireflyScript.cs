@@ -11,13 +11,14 @@ public class FireflyScript : MonoBehaviour
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
     {
-        GameObject Player = GameObject.Find(PlayerName);
-        this.prefab.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
-        Light light = this.prefab.GetComponent<Light>();
-        if(light != null) light.color = Color.green;
-
         if (other.gameObject.name == "Body")
         {
+
+            this.prefab.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
+            Light light = this.prefab.GetComponent<Light>();
+            if(light != null) light.color = Color.green;
+
+        
             Parameters param = new Parameters();
             param.PutExtra("X_CHECK", this.gameObject.transform.position.x);
             param.PutExtra("Y_CHECK", this.gameObject.transform.position.y);

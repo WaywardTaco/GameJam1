@@ -28,10 +28,8 @@ public class MistHitPlayer : MonoBehaviour
             Debug.Log("Hit player");
             this.playerHealth -= 10;
 
-
-            Parameters param = new Parameters();
-            param.PutExtra("NUM_HEALTH", this.playerHealth);
-            EventBroadcaster.Instance.PostEvent(EventNames.MistCollide.ON_COLLIDE_MIST);
+            if(this.playerHealth <= 0)
+                EventBroadcaster.Instance.PostEvent(EventNames.MistCollide.ON_MIST_KILLS);
         }
     }
 
