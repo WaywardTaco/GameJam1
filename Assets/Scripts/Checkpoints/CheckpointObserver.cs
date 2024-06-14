@@ -43,6 +43,7 @@ public class CheckpointObserver : MonoBehaviour
         {
             Debug.Log("e pressed");
             this.Player.SetActive(false);
+            this._audioPlayer.Play();
             this.Player.transform.position = this.Position;
             this.Player.SetActive(true);
 
